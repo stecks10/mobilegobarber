@@ -23,7 +23,7 @@ export function* updateProfile({ payload }) {
     yield put(updateProfileSuccess(response.data));
   } catch (err) {
     Alert.alert(
-      'Falhana atualização',
+      'Falha na  atualização',
       'Houve um erro na atualização do perfil, verifique seus dados'
     );
     yield put(updateProfileFailure());
