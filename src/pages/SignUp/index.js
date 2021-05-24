@@ -16,7 +16,7 @@ import {
     SignLinkText,
 } from './styles';
 
-export default function SignUp({ navigation }) {
+function SignUp({ navigation }) {
     const dispatch = useDispatch();
 
     const emailRef = useRef();
@@ -26,7 +26,7 @@ export default function SignUp({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const loading = useSelector(state => state.auth.loading);
+    const loading = useSelector((state) => state.auth.loading);
 
     function handleSubmit() {
         dispatch(signUpRequest(name, email, password));
@@ -44,7 +44,7 @@ export default function SignUp({ navigation }) {
                         autoCapitalize="none"
                         placeholder="Nome completo"
                         returnKeyType="next"
-                        onSubmitEditin={() => emailRef.current.focus()}
+                        onSubmitEditing={() => emailRef.current.focus()}
                         value={name}
                         onChangeText={setName}
                     />
@@ -54,10 +54,10 @@ export default function SignUp({ navigation }) {
                         keyboardType="email-address"
                         autoCorrect={false}
                         autoCapitalize="none"
-                        placeholder="Digite seu email"
+                        placeholder="Digite seu e-mail"
                         ref={emailRef}
                         returnKeyType="next"
-                        onSubmitEditin={() => passwordRef.current.focus()}
+                        onSubmitEditing={() => passwordRef.current.focus()}
                         value={email}
                         onChangeText={setEmail}
                     />
@@ -68,18 +68,22 @@ export default function SignUp({ navigation }) {
                         placeholder="Sua senha secreta"
                         ref={passwordRef}
                         returnKeyType="send"
-                        onSubmitEditin={handleSubmit}
+                        onSubmitEditing={handleSubmit}
                         value={password}
                         onChangeText={setPassword}
                     />
 
-                    <SubmitButton onPress={loading} onPress={handleSubmit}>Acessar</SubmitButton>
+                    <SubmitButton loading={loading} onPress={handleSubmit}>
+                        Criar conta
+            </SubmitButton>
                 </Form>
 
                 <SignLink onPress={() => navigation.navigate('SignIn')}>
-                    <SignLinkText>Já tenho conta</SignLinkText>
+                    <SignLinkText>Já possuo cadastro</SignLinkText>
                 </SignLink>
             </Container>
         </Background>
     );
 }
+
+export default SignUp;

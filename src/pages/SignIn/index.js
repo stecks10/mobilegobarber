@@ -16,17 +16,17 @@ import {
     SubmitButton
 } from './styles';
 
-export default function SignIn({ navigation }) {
-    const dispath = useDispatch();
+function SignIn({ navigation }) {
+    const dispatch = useDispatch();
     const passwordRef = useRef();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const loading = useSelector(state => state.auth.loading);
+    const loading = useSelector((state) => state.auth.loading);
 
     function handleSubmit() {
-        dispath(signInRequest(email, password));
+        dispatch(signInRequest(email, password));
     }
 
     return (
@@ -58,13 +58,17 @@ export default function SignIn({ navigation }) {
                         onChangeText={setPassword}
                     />
 
-                    <SubmitButton onPress={loading} onPress={handleSubmit}>Acessar</SubmitButton>
+                    <SubmitButton loading={loading} onPress={handleSubmit}>
+                        Acessar
+            </SubmitButton>
                 </Form>
 
                 <SignLink onPress={() => navigation.navigate('SignUp')}>
-                    <SignLinkText>Criar Conta Gratuita</SignLinkText>
+                    <SignLinkText>Criar conta gratuita</SignLinkText>
                 </SignLink>
             </Container>
         </Background>
     );
 }
+
+export default SignIn;
