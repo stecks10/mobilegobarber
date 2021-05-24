@@ -60,7 +60,7 @@ function SignIn({ navigation }) {
 
                     <SubmitButton loading={loading} onPress={handleSubmit}>
                         Acessar
-            </SubmitButton>
+                    </SubmitButton>
                 </Form>
 
                 <SignLink onPress={() => navigation.navigate('SignUp')}>

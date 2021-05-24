@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { persistReducer } from 'redux-persist'
+import { persistReducer } from 'redux-persist';
 
-// eslint-disable-next-line
 export default (reducers) => {
   const persistedReducer = persistReducer(
     {
@@ -9,8 +8,8 @@ export default (reducers) => {
       storage: AsyncStorage,
       whitelist: ['auth', 'user'],
     },
-    reducers,
-  )
+    reducers
+  );
 
-  return persistedReducer
-}
+  return persistedReducer;
+};
