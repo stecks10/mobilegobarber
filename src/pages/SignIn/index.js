@@ -6,6 +6,7 @@ import logo from '../../assets/logo.png';
 
 import Background from '../../components/Background';
 import { signInRequest } from '../../store/modules/auth/actions';
+
 import {
     Container,
     Form,
@@ -57,13 +58,11 @@ export default function SignIn({ navigation }) {
                         onChangeText={setPassword}
                     />
 
-                    <SubmitButton loading={loading} onPress={handleSubmit}>
-                        Acessar
-                    </SubmitButton>
+                    <SubmitButton onPress={loading} onPress={handleSubmit}>Acessar</SubmitButton>
                 </Form>
 
                 <SignLink onPress={() => navigation.navigate('SignUp')}>
-                    <SignLinkText>Criar conta gratuita</SignLinkText>
+                    <SignLinkText>Criar Conta Gratuita</SignLinkText>
                 </SignLink>
             </Container>
         </Background>
