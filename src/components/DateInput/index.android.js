@@ -22,7 +22,6 @@ export default function DateInput({ date, onChange }) {
 
     if (action === DatePickerAndroid.dateSetAction) {
       const selectedDate = new Date(year, month, day);
-
       onChange(selectedDate);
     }
   }
@@ -30,7 +29,7 @@ export default function DateInput({ date, onChange }) {
   return (
     <Container>
       <DateButton onPress={handleOpenPicker}>
-        <Icon name="event" color="#fff" size={20} />
+        <Icon name="event" color="#FFF" size={20} />
         <DateText>{dateFormatted}</DateText>
       </DateButton>
     </Container>

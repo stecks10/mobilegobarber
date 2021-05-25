@@ -4,17 +4,15 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-
-import DashBoard from './pages/Dashboard';
-import Profile from './pages/Profile';
 
 import SelectProvider from './pages/New/SelectProvider';
 import SelectDateTime from './pages/New/SelectDateTime';
 import Confirm from './pages/New/Confirm';
 
+import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 
 export default (signedIn = false) =>
   createAppContainer(
@@ -26,7 +24,7 @@ export default (signedIn = false) =>
         }),
         App: createBottomTabNavigator(
           {
-            DashBoard,
+            Dashboard,
             New: {
               screen: createStackNavigator(
                 {

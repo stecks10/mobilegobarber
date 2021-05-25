@@ -14,7 +14,6 @@ export default function DateInput({ date, onChange }) {
     () => format(date, "dd 'de' MMMM 'de' yyyy", { locale: pt }),
     [date]
   );
-
   return (
     <Container>
       <DateButton onPress={() => setOpened(!opened)}>
@@ -33,7 +32,6 @@ export default function DateInput({ date, onChange }) {
             mode="date"
           />
         </Picker>
-
       )}
     </Container>
   );

@@ -11,8 +11,8 @@ import {
   Title,
   Form,
   FormInput,
-  Separator,
   SubmitButton,
+  Separator,
   LogoutButton,
 } from './styles';
 

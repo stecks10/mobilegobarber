@@ -1,20 +1,20 @@
 import React, { useRef, useState } from 'react';
 import { Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-
+import Background from '../../components/Background';
 import logo from '../../assets/logo.png';
 
-import Background from '../../components/Background';
-import { signInRequest } from '../../store/modules/auth/actions';
 
 import {
   Container,
   Form,
   FormInput,
+  SubmitButton,
   SignLink,
   SignLinkText,
-  SubmitButton
 } from './styles';
+
+import { signInRequest } from '../../store/modules/auth/actions';
 
 export default function SignIn({ navigation }) {
   const dispatch = useDispatch();

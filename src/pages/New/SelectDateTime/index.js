@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import api from '../../../services/api';
-
 import Background from '../../../components/Background';
+import { Container, HourList, Hour, Title } from './styles';
+
 import DateInput from '../../../components/DateInput';
 
-import { Container, HourList, Hour, Title } from './styles';
+import api from '../../../services/api';
 
 export default function SelectDateTime({ navigation }) {
   const [date, setDate] = useState(new Date());
