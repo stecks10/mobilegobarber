@@ -1,11 +1,10 @@
 import { Alert } from 'react-native';
-import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { takeLatest, call, put, all, delay } from 'redux-saga/effects';
 
-import api from '../../../services/api';
-
+import api from '~/services/api';
 import { signInSuccess, signFailure } from './actions';
 
-function* signIn({ payload }) {
+export function* signIn({ payload }) {
   try {
     const { email, password } = payload;
 
@@ -17,21 +16,23 @@ function* signIn({ payload }) {
     const { token, user } = response.data;
 
     if (user.provider) {
-      Alert.alert('Erro de login', 'Usuário não pode ser um prestador');
+      Alert.alert(
+        'Erro no login',
+        'O usuario nao pode ser prestador de servicos'
+      );
       return;
     }
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
-    yield delay(1000);
-
+    yield delay(3000);
     yield put(signInSuccess(token, user));
 
     // history.push('/dashboard');
   } catch (err) {
     Alert.alert(
-      'Falha na autenticação',
-      'Por favor confira seu e-mail e senha!'
+      'Falha na autenticacao',
+      'Houve um erro no login, verifique seus dados '
     );
     yield put(signFailure());
   }
@@ -40,7 +41,6 @@ function* signIn({ payload }) {
 export function* signUp({ payload }) {
   try {
     const { name, email, password } = payload;
-
     yield call(api.post, 'users', {
       name,
       email,
@@ -49,8 +49,10 @@ export function* signUp({ payload }) {
 
     // history.push('/');
   } catch (err) {
-    Alert.alert('Falha no registro', 'Por favor confira seus dados!');
-
+    Alert.alert(
+      'Falha no cadastro',
+      'Houve um erro no cadastro, verifique seus dados'
+    );
     yield put(signFailure());
   }
 }
